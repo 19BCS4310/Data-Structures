@@ -1,0 +1,78 @@
+# Data-Structures
+//to create and insert in a LikedList
+#include<iostream>
+using namespace std;
+
+struct node{
+	int data;
+	node *next;
+};
+node *head=NULL;
+
+void createList(int n){
+	node *ptr;
+	for(int i=0;i<n;i++){
+    	node *newnode=new node();
+    	newnode->next=NULL;
+    	cout<<"Enter the data: ";
+    	int x;
+		cin>>x;
+    	newnode->data=x;
+    	if(head== NULL){
+    		head=ptr=newnode;
+		}
+		
+		else{
+			ptr->next=newnode;
+			ptr=newnode;
+		}
+	
+		
+    }
+}
+void printList(int n){
+	node *ptr;
+	cout<<"\nThe list is:\n";
+	ptr=head;
+    for(int i=0;i<n ;i++){
+        
+		cout<<" "<<ptr->data;
+		ptr=ptr->next;	
+	}	
+}
+ 
+void insert(){
+	int p;
+	cout<<"\nEnter the position where you want to insert: ";
+	cin>>p;
+	cout<<"Enter th data: ";
+	int x;
+	cin>>x;
+	node * newnode=new node();
+	newnode->data=x;
+	newnode->next=NULL;
+    
+    if(p==1){
+    	newnode->next=head;
+    	head=newnode;
+	}
+	else{
+		node *ptr=head;
+		for(int i=0;i<p-2;i++){
+			ptr=ptr->next;
+		}
+		newnode->next=ptr->next;
+		ptr->next=newnode;
+	
+	}
+}
+
+int main(){
+	int n;
+	cout<<"Enter the size of linked list: ";
+	cin>>n;
+	createList(n);
+    printList(n);
+    insert();
+	printList(n+1);
+}
